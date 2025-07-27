@@ -23,13 +23,13 @@ void loop() {
   // Serial.println(valY);
   long valResult=100100;
 
-  if (valY<341)
+  if (valY<470)
     valResult=valResult+10;
-  else if (valY>683)
+  else if (valY>530)
     valResult=valResult+20;
-  if (valX<341)
+  if (valX<470)
     valResult=valResult+1;
-  else if (valX>683)
+  else if (valX>530)
     valResult=valResult+2;
   if (valZ>0)
     valResult=valResult+100;
@@ -42,13 +42,13 @@ void loop() {
   // Serial.print(" - ");
   // Serial.println(valY);
 
-  if (valY<341)
+  if (valY<470)
     valResult=valResult+10000;
-  else if (valY>683)
+  else if (valY>530)
     valResult=valResult+20000;
-  if (valX<341)
+  if (valX<470)
     valResult=valResult+1000;
-  else if (valX>683)
+  else if (valX>530)
     valResult=valResult+2000;
   if (valZ>0)
     valResult=valResult+100000;
