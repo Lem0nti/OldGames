@@ -1,4 +1,4 @@
-# InerKarate
+# InterKarate
 Игра International Karate для Atari 65XE.
 
 Управление белым бойцом - стрелки, удар - пробел.
