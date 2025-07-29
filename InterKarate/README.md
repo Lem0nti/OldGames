@@ -15,6 +15,7 @@
 
 <img width="720" height="1280" alt="image" src="https://github.com/user-attachments/assets/4012907f-d865-4767-8a3b-f334c4a8e769" />
 
+
 Скриншот:
 
 <img width="1920" height="1019" alt="image" src="https://github.com/user-attachments/assets/841a1e95-402c-4d82-84c1-f7dd8760acf1" />
