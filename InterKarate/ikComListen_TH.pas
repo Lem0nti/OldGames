@@ -3,7 +3,7 @@ unit ikComListen_TH;
 interface
 
 uses
-  Classes, Windows, ikGameRender_TH;
+  Classes, Windows, ikGameRender_TH, IniFiles, SysUtils;
 
 type
   TComListen=class(TThread)
@@ -36,7 +36,13 @@ var
   q: integer;
   tmpByte: byte;
 begin
-  comPort := 'COM3'; // ”кажем COM-порт, который вы хотите открыть
+  with TIniFile.Create(ChangeFileExt(ParamStr(0),'.ini')) do
+    try
+      comPort:=ReadString('MAIN','COM','COM3');
+    finally
+      Free;
+    end;
+//  comPort := 'COM3'; // ”кажем COM-порт, который вы хотите открыть
 
   hPort := CreateFile(
     PChar('\\.\' + comPort),
