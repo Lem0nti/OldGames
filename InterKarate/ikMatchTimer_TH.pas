@@ -18,6 +18,7 @@ type
     procedure DoExecute; override;
   public
     constructor Create(AName: string = ''); override;
+    destructor Destroy; override;
     property Paused: boolean read GetPaused write SetPaused;
     property Timer: integer read GetTimer write SetTimer;
   end;
@@ -32,40 +33,48 @@ begin
   Start;
 end;
 
+destructor TMatchTimer.Destroy;
+begin
+  Enabled:=false;
+  StopReceive;
+  Stop;
+  inherited;
+end;
+
 procedure TMatchTimer.DoExecute;
 begin
-  FLock.Enter;
+  FBaseThreadLock.Enter;
   if not FPaused then
     FTimer:=FTimer-1;
-  FLock.Leave;
+  FBaseThreadLock.Leave;
 end;
 
 function TMatchTimer.GetPaused: boolean;
 begin
-  FLock.Enter;
+  FBaseThreadLock.Enter;
   result:=FPaused;
-  FLock.Leave;
+  FBaseThreadLock.Leave;
 end;
 
 function TMatchTimer.GetTimer: integer;
 begin
-  FLock.Enter;
+  FBaseThreadLock.Enter;
   result:=FTimer;
-  FLock.Leave;
+  FBaseThreadLock.Leave;
 end;
 
 procedure TMatchTimer.SetPaused(const Value: boolean);
 begin
-  FLock.Enter;
+  FBaseThreadLock.Enter;
   FPaused:=Value;
-  FLock.Leave;
+  FBaseThreadLock.Leave;
 end;
 
 procedure TMatchTimer.SetTimer(ATimer: integer);
 begin
-  FLock.Enter;
+  FBaseThreadLock.Enter;
   FTimer:=ATimer;
-  FLock.Leave;
+  FBaseThreadLock.Leave;
 end;
 
 end.

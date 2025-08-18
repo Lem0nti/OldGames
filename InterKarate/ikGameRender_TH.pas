@@ -139,14 +139,12 @@ end;
 
 destructor TGameRender.Destroy;
 begin
+  StopReceive;
   Stop;
-  MatchTimer.Enabled:=false;
   FreeAndNil(MatchTimer);
   FreeAndNil(Numbers);
   FreeAndNil(AAList);
   FreeAndNil(HitRect);
-//  FreeAndNil(Player1);
-//  FreeAndNil(Player2);
   FreeAndNil(Animations1);
   FreeAndNil(Animations2);
   inherited;
@@ -226,7 +224,6 @@ var
     if FloatTill<Now then
     begin
       CurHitScore:=PlayerWhoHit.Animations[PlayerWhoHit.CurAction].HitScore;
-      PlayerWhoHit.Points:=PlayerWhoHit.Points+CurHitScore;
       FloatX:=PlayerWhoFall.XPos+15;
       if PlayerWhoFall.Reverse then
         FloatX:=320-FloatX
@@ -238,6 +235,7 @@ var
         CurHitScore:=CurHitScore*2;
       if PlayerWhoHit.Reverse=PlayerWhoFall.Reverse then
         CurHitScore:=(CurHitScore div 200)*100;
+      PlayerWhoHit.Points:=PlayerWhoHit.Points+CurHitScore;
       SetFloatNumbers(CurHitScore,Point(FloatX,FloatScoreY));
     end;
   end;

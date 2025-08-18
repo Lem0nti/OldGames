@@ -53,7 +53,7 @@ begin
   BASS_Free;
   Timer.Enabled:=false;
   GameRender.Enabled:=false;
-  //GameRender.Stop;
+  GameRender.Stop;
   FreeAndNil(GameRender);
 end;
 
